@@ -15,14 +15,14 @@ type PaymentMethodRequest struct {
 	Token              string                       `xml:"token,omitempty"`
 	PaymentMethodNonce string                       `xml:"payment-method-nonce,omitempty"`
 	Options            *PaymentMethodRequestOptions `xml:"options,omitempty"`
+	BillingAddress     *Address                     `xml:"billing-address,omitempty"`
 }
 
 type PaymentMethodRequestOptions struct {
-	MakeDefault                   bool     `xml:"make-default,omitempty"`
-	FailOnDuplicatePaymentMethod  bool     `xml:"fail-on-duplicate-payment-method,omitempty"`
-	VerifyCard                    *bool    `xml:"verify-card,omitempty"`
-	VerificationMerchantAccountId string   `xml:"verification-merchant-account-id,omitempty"`
-	BillingAddress                *Address `xml:"billing-address,omitempty"`
+	MakeDefault                   bool   `xml:"make-default,omitempty"`
+	FailOnDuplicatePaymentMethod  bool   `xml:"fail-on-duplicate-payment-method,omitempty"`
+	VerifyCard                    *bool  `xml:"verify-card,omitempty"`
+	VerificationMerchantAccountId string `xml:"verification-merchant-account-id,omitempty"`
 }
 
 func (g *PaymentMethodGateway) Create(ctx context.Context, paymentMethodRequest *PaymentMethodRequest) (PaymentMethod, error) {
